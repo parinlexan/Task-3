@@ -1,5 +1,6 @@
 import allure
 import pytest
+from selenium.webdriver import ActionChains
 
 from page_object.pages.base_page import BasePage
 from page_object.locators.main_page_locators import MainPageLocators
@@ -41,11 +42,22 @@ class MainPage(BasePage):
             pytest.skip("Номер заказа 9999 - некорректный номер")
 
 
-    @allure.step("Перетаскиваем ингредиент в заказ")
+    @allure.step("Перетаскиваем ингредиенты в заказ")
     def drag_ingr(self):
-        self.find_element_with_wait(MainPageLocators.ingr_name)
-        self.find_element_with_wait(MainPageLocators.ingr_order)
-        self.drag_and_drop_element(MainPageLocators.ingr_name, MainPageLocators.ingr_order)
+        bun_element = self.find_element_with_wait(MainPageLocators.bun)
+        basket_element = self.find_element_with_wait(MainPageLocators.ingr_basket)
+        if self.driver.name == 'firefox':
+            script = """
+                    var dragStart = new DragEvent('dragstart', { bubbles: true });
+                    var drop = new DragEvent('drop', { bubbles: true });
+                    var dragEnd = new DragEvent('dragend', { bubbles: true });
+                    arguments[0].dispatchEvent(dragStart);
+                    arguments[1].dispatchEvent(drop);
+                    arguments[0].dispatchEvent(dragEnd);
+                    """
+            self.driver.execute_script(script, bun_element, basket_element)
+        else:
+            self.drag_and_drop_element(MainPageLocators.bun, MainPageLocators.ingr_basket)
 
     @allure.step("Проверяем счетчик")
     def check_value_counter(self):

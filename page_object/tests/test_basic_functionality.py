@@ -41,7 +41,6 @@ class TestBasicFunctionality:
         value1 = main_page.check_value_counter()
         main_page.click_construct_btn()
         main_page.drag_ingr()
-        main_page.drag_ingr()
         value2 = main_page.check_value_counter()
         assert value1 != value2
 
