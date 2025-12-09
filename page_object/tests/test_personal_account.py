@@ -43,6 +43,6 @@ class TestPersonalAccount:
         login_page.click_login_btn()
         main_page.click_pers_acc_btn()
         login_page.click_logout_btn()
-        driver.refresh()
+        login_page.link_change(driver, urls.LOGIN_URL)
         current_url = login_page.check_url()
         assert current_url == urls.LOGIN_URL

@@ -29,6 +29,7 @@ class TestOrdersFeed:
         main_page.drag_ingr()
         main_page.submit_order()
         main_page.close_popup()
+        driver.refresh()
         main_page.click_pers_acc_btn()
         login_page.click_history_orders_btn()
         id = login_page.last_order_check_id()

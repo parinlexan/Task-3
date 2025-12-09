@@ -82,3 +82,7 @@ class BasePage:
     def password_state_get(self):
         password_input = self.find_element_with_wait(CommonLocators.password_input).get_attribute("type")
         return password_input
+
+    @allure.step("Ожидание смены страницы")
+    def link_change(self, driver, exp_url, timeout=TIMEOUT):
+        WebDriverWait(driver, timeout).until(expected_conditions.url_to_be(exp_url))
