@@ -48,10 +48,6 @@ class BasePage:
         )
         WebDriverWait(self.driver, timeout).until(expected_conditions.visibility_of_element_located(locator)).click()
 
-    @allure.step("Вводим текст в поле")
-    def add_text(self, locator, text):
-        self.find_element_with_wait(locator).send_keys(text)
-
     @allure.step("Получаем значение в поле")
     def get_value(self, locator):
         return self.find_element_with_wait(locator).get_attribute("value")

@@ -17,6 +17,10 @@ def generate_password():
     password = ''.join(random.choices(string.ascii_lowercase, k=10))
     return password
 
+def generate_name():
+    login = ''.join(random.choices(string.ascii_lowercase, k=10))
+    return login
+
 def create_user(payload):
     return requests.post(f'{BASE_URL}{CREATE_USER}', data=payload)
 

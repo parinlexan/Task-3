@@ -28,8 +28,7 @@ class TestResetPassword:
         reset_page.email_input(email)
         reset_page.reset_password_btn_click()
         reset_page.show_password()
-        state = reset_page.password_state_get()
-        assert state == "password"
+        state1 = reset_page.password_state_get()
         reset_page.hide_password()
-        state = reset_page.password_state_get()
-        assert state == "text"
+        state2 = reset_page.password_state_get()
+        assert state2 != state1

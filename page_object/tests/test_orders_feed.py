@@ -17,7 +17,7 @@ class TestOrdersFeed:
 
     @allure.title("Заказы пользователя из раздела История заказов отображаются на странице Лента заказов")
     def test_client_orders_in_orders_feed(self, driver, user):
-        password, email, access_token = user
+        password, email, name, access_token = user
         main_page = MainPage(driver)
         main_page.go_to_url(urls.BASE_URL)
         main_page.click_pers_acc_btn()
@@ -38,7 +38,7 @@ class TestOrdersFeed:
 
     @allure.title("При создании нового заказа счётчик Выполнено за всё время увеличивается")
     def test_all_time_counter(self, driver, user):
-        password, email, access_token = user
+        password, email, name, access_token = user
         main_page = MainPage(driver)
         main_page.go_to_url(urls.BASE_URL)
         main_page.click_pers_acc_btn()
@@ -60,7 +60,7 @@ class TestOrdersFeed:
 
     @allure.title("При создании нового заказа счётчик Выполнено за сегодня увеличивается")
     def test_all_time_counter(self, driver, user):
-        password, email, access_token = user
+        password, email, name, access_token = user
         main_page = MainPage(driver)
         main_page.go_to_url(urls.BASE_URL)
         main_page.click_pers_acc_btn()
@@ -82,7 +82,7 @@ class TestOrdersFeed:
 
     @allure.title("После оформления заказа его номер появляется в разделе В работе")
     def test_all_time_counter(self, driver, user):
-        password, email, access_token = user
+        password, email, name, access_token = user
         main_page = MainPage(driver)
         main_page.go_to_url(urls.BASE_URL)
         main_page.click_pers_acc_btn()
