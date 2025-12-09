@@ -47,7 +47,7 @@ class TestBasicFunctionality:
 
     @allure.title("Оформление заказа после авторизации")
     def test_login_create_order(self, driver, user):
-        password, email, name, access_token = user
+        password, email, access_token = user
         main_page = MainPage(driver)
         main_page.go_to_url(urls.BASE_URL)
         main_page.click_pers_acc_btn()
